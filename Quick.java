@@ -28,6 +28,11 @@ public class Quick{
           data[start] = data[s - 1];
           data[s - 1] = pivot;
         }
+        else
+        {
+          data[start] = data[s];
+          data[s] = pivot;
+        }
       }
     }
     start = s;
