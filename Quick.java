@@ -2,22 +2,36 @@ public class Quick{
   public int partition ( int [] data, int start, int end){
     int random = ((int) (Math.random() * 100) ) % data.length;
     int pivot = data[random];
-    int[] holderArray = new int[data.length];
-    int s = 0;
-    int e = data.length - 1;
-    for(int i = 0; i < data.length && s < data.length && e > -1; i ++)
+    int holder = data[0];
+    data[start] = pivot;
+    data[random] = holder;
+    // int[] holderArray = new int[data.length];
+    int s = start + 1;
+    int e = end;
+    for(int i = 0; i < data.length - 1 && s < data.length && e > -1; i ++)
     {
-      if(data[i] <= pivot)
+      if(data[s] > pivot)
       {
-        holderArray[s] = data[i];
-        s++;
-      }
-      if(data[i] > pivot)
-      {
-        holderArray[e] = data[i];
+        holder = data[s];
+        data[s] = data[e];
+        data[e] = holder;
         e--;
       }
+      if(data[s] <= pivot)
+      {
+        s++;
+      }
+      if(e == s)
+      {
+        if(data[s] > pivot)
+        {
+          data[start] = data[s - 1];
+          data[s - 1] = pivot;
+        }
+      }
     }
+    start = s;
+    end = e;
     return random;
   }
 
