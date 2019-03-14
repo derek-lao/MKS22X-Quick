@@ -229,6 +229,8 @@ public class Quick{
 
   public static void main(String[] args){
     int[] numArray = new int[10];
+    int[][] problemArrays = new int[10][10];
+    // problemArrays[0] = {10, 11, 15, 11, 15, 12, 10, 14, 11, 10};
     for(int i = 0; i < numArray.length; i ++)
     {
       numArray[i] = (int) (Math.random()*1000) % 20;
