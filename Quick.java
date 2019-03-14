@@ -5,48 +5,63 @@ public class Quick{
   /**@return the index of the final position of the pivot element.
  */
   public static int partition ( int [] data, int start, int end){
-    int random = ((int) (Math.random() * 100) ) % data.length;
+    if(start == end)
+    {
+      return start;
+    }
+    int random = (((int) (Math.random() * 100) ) % (end - start + 1)) + start;
     int pivot = data[random];
     int holder = data[start];
     data[start] = pivot;
     data[random] = holder;
-    // System.out.println("The index is " + random);
-    // System.out.println("The pivot value is " + pivot + "\n");
+    System.out.println("The index is " + random);
+    System.out.println("The pivot value is " + pivot + "\n");
     int s = start + 1;
     int e = end;
     for(int i = 0; i < data.length && s < data.length && e > -1; i ++)
     {
-      // System.out.println("Before swapping:");
-      // System.out.println("Index s is " + s + "  Index e is " + e);
-      // System.out.println("The array is now " + Arrays.toString(data));
-      if(data[s] > pivot)
-      {
-        holder = data[s];
-        data[s] = data[e];
-        data[e] = holder;
-        e--;
-      }
-      if(data[s] <= pivot)
-      {
-        s++;
-      }
+      System.out.println("Before swapping:");
+      System.out.println("Index s is " + s + "  Index e is " + e);
+      System.out.println("The array is now " + Arrays.toString(data));
       if(e <= s)
       {
         if(data[s] > pivot)
         {
           data[start] = data[s - 1];
           data[s - 1] = pivot;
+          random = s - 1;
         }
         else
         {
           data[start] = data[s];
           data[s] = pivot;
+          random = s;
         }
         i = data.length;
+        System.out.println("After swapping:");
+        System.out.println("Index s is " + s + "  Index e is " + e);
+        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        continue;
       }
-      // System.out.println("After swapping:");
-      // System.out.println("Index s is " + s + "  Index e is " + e);
-      // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+      if(data[s] > pivot)
+      {
+        holder = data[s];
+        data[s] = data[e];
+        data[e] = holder;
+        e--;
+        System.out.println("After swapping:");
+        System.out.println("Index s is " + s + "  Index e is " + e);
+        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        continue;
+      }
+      if(data[s] <= pivot)
+      {
+        s++;
+        System.out.println("After swapping:");
+        System.out.println("Index s is " + s + "  Index e is " + e);
+        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        continue;
+      }
     }
     start = s;
     end = e;
@@ -56,23 +71,25 @@ public class Quick{
   /*return the value that is the kth smallest value of the array.
   */
   public static int quickselect(int[] data, int k){
-    return quickselectH(data,k,0,data.length - 1);
+    int answer = quickselectH(data,k,0,data.length - 1);
+    System.out.println("The array now is " + Arrays.toString(data));
+    return answer;
   }
 
 
   private static int quickselectH(int[] data, int k, int splice1, int splice2){
     int holder = partition(data,splice1,splice2);
-    if(holder < k)
+    if(holder < k - 1)
     {
-      return quickselectH(data,k,holder,splice2);
+      return quickselectH(data,k,holder + 1,splice2);
     }
-    else if(holder > k)
+    else if(holder > k - 1)
     {
-      return quickselectH(data,k,splice1,holder);
+      return quickselectH(data,k,splice1,holder - 1);
     }
     else
     {
-      return data[k];
+      return data[k - 1];
     }
   }
 
@@ -86,6 +103,7 @@ public class Quick{
     System.out.println("The original array is: " + Arrays.toString(numArray));
     // partition(numArray,0,numArray.length - 1);
     System.out.println("quickselect for the fourth smallest element: " + quickselect(numArray,4));
+    // System.out.println("quickselect for the ninth smallest element: " + quickselect(numArray,9));
   }
 
 
