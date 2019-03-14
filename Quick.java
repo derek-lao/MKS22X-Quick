@@ -8,12 +8,15 @@ public class Quick{
     int holder = data[start];
     data[start] = pivot;
     data[random] = holder;
-    // int[] holderArray = new int[data.length];
+    System.out.println("The index is " + random);
+    System.out.println("The pivot value is " + pivot + "\n");
     int s = start + 1;
     int e = end;
-    for(int i = 0; i < data.length - 1 && s < data.length && e > -1; i ++)
+    for(int i = 0; i < data.length && s < data.length && e > -1; i ++)
     {
-    System.out.println("The array is now " + Arrays.toString(data));
+      System.out.println("Before swapping:");
+      System.out.println("Index s is " + s + "  Index e is " + e);
+      System.out.println("The array is now " + Arrays.toString(data));
       if(data[s] > pivot)
       {
         holder = data[s];
@@ -25,7 +28,7 @@ public class Quick{
       {
         s++;
       }
-      if(e == s)
+      if(e <= s)
       {
         if(data[s] > pivot)
         {
@@ -37,7 +40,11 @@ public class Quick{
           data[start] = data[s];
           data[s] = pivot;
         }
+        i = data.length;
       }
+      System.out.println("After swapping:");
+      System.out.println("Index s is " + s + "  Index e is " + e);
+      System.out.println("The array is now " + Arrays.toString(data) + "\n");
     }
     start = s;
     end = e;
@@ -51,7 +58,7 @@ public class Quick{
       numArray[i] = (int) (Math.random()*1000) % 20;
     }
     System.out.println("The original array is: " + Arrays.toString(numArray));
-    System.out.println("The index is " + partition(numArray,0,numArray.length - 1));
+    partition(numArray,0,numArray.length - 1);
     System.out.println("The new array is: " + Arrays.toString(numArray));
 
   }
