@@ -33,53 +33,63 @@ public class Quick{
     System.out.println("The index is " + random);
     System.out.println("The pivot value is " + pivot + "\n");
     int s = start + 1;
+    int st = start + 1;
     int e = end;
     for(int i = 0; i < data.length && s < data.length && e > -1; i ++)
     {
       // System.out.println("Before swapping:");
-      // System.out.println("Index s is " + s + "  Index e is " + e);
+      // System.out.println("Index st is " + st + "  Index e is " + e);
       // System.out.println("The array is now " + Arrays.toString(data));
-      if(e <= s)
+      if(e <= st)
       {
-        if(data[s] > pivot)
+        if(data[st] > pivot)
         {
-          data[start] = data[s - 1];
-          data[s - 1] = pivot;
-          random = s - 1;
+          data[start] = data[st - 1];
+          data[st - 1] = pivot;
+          random = st - 1;
         }
         else
         {
-          data[start] = data[s];
-          data[s] = pivot;
-          random = s;
+          data[start] = data[st];
+          data[st] = pivot;
+          random = st;
         }
         i = data.length;
         System.out.println("After swapping:");
-        System.out.println("Index s is " + s + "  Index e is " + e);
+        System.out.println("Index st is " + st + "  Index e is " + e);
         System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
-      if(data[s] > pivot)
+      if(data[st] > pivot)
       {
-        holder = data[s];
-        data[s] = data[e];
+        holder = data[st];
+        data[st] = data[e];
         data[e] = holder;
         e--;
         // System.out.println("After swapping:");
-        // System.out.println("Index s is " + s + "  Index e is " + e);
+        // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
-      if(data[s] <= pivot)
+      if(data[st] < pivot)
       {
+        st++;
         s++;
         // System.out.println("After swapping:");
-        // System.out.println("Index s is " + s + "  Index e is " + e);
+        // System.out.println("Index st is " + st + "  Index e is " + e);
+        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        continue;
+      }
+      if(data[st] == pivot)
+      {
+        st++;
+        // System.out.println("After swapping:");
+        // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
     }
-    start = s;
+    start = st;
     end = e;
     return random;
   }
