@@ -104,7 +104,7 @@ public class Quick{
     {
       return start;
     }
-    int random = start;
+    int random = 0;
     int lo = data[start];
     int hi = data[end];
     int med = data[((start + end) / 2)];
