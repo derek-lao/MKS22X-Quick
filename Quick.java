@@ -109,11 +109,11 @@ public class Quick{
     int holder = partition(data,splice1,splice2);
     if(holder < k)
     {
-      return quickselectH(data,k,holder + 1,splice2);
+      return quickselectH(data,k,holder,splice2);
     }
     else if(holder > k)
     {
-      return quickselectH(data,k,splice1,holder - 1);
+      return quickselectH(data,k,splice1,holder);
     }
     else
     {
@@ -127,12 +127,12 @@ public class Quick{
     quicksortH(data,0,data.length - 1);
   }
 
-  public static void quicksortH(int[] data,int splice1, int splice2){
+  private static void quicksortH(int[] data,int splice1, int splice2){
     int holder = partition(data,splice1,splice2);
     if(splice1 < splice2)
     {
-      quicksortH(data,splice1,holder - 1);
-      quicksortH(data,holder + 1,splice2);
+      quicksortH(data,splice1,holder);
+      quicksortH(data,holder,splice2);
     }
   }
 
@@ -144,11 +144,13 @@ public class Quick{
       numArray[i] = (int) (Math.random()*1000) % 20;
     }
     System.out.println("The original array is: " + Arrays.toString(numArray));
-    partition(numArray,0,numArray.length - 1);
+    // partition(numArray,0,numArray.length - 1);
     // System.out.println("quickselect for the fourth smallest element: " + quickselect(numArray,4));
     // System.out.println("quickselect for the ninth smallest element: " + quickselect(numArray,9));
     //
     // System.out.println("quickselect for the 0th smallest element: " + quickselect(numArray,0));
+    quicksort(numArray);
+    System.out.println("The new sorted array is: " + Arrays.toString(numArray));
   }
 
 
