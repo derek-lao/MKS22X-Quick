@@ -42,17 +42,17 @@ public class Quick{
       // System.out.println("The array is now " + Arrays.toString(data));
       if(e <= st)
       {
-        if(data[st] > pivot)
+        if(data[s] >= pivot)
         {
-          data[start] = data[st - 1];
-          data[st - 1] = pivot;
-          random = st - 1;
+          data[start] = data[s - 1];
+          data[s - 1] = pivot;
+          random = s - 1;
         }
         else
         {
-          data[start] = data[st];
-          data[st] = pivot;
-          random = st;
+          data[start] = data[s];
+          data[s] = pivot;
+          random = s;
         }
         i = data.length;
         System.out.println("After swapping:");
@@ -73,6 +73,9 @@ public class Quick{
       }
       if(data[st] < pivot)
       {
+        holder = data[st];
+        data[st] = data[s];
+        data[s] = holder;
         st++;
         s++;
         // System.out.println("After swapping:");
@@ -89,8 +92,7 @@ public class Quick{
         continue;
       }
     }
-    start = st;
-    end = e;
+    System.out.println("The index of the pivot is " + random);
     return random;
   }
 
@@ -133,11 +135,11 @@ public class Quick{
       numArray[i] = (int) (Math.random()*1000) % 20;
     }
     System.out.println("The original array is: " + Arrays.toString(numArray));
-    // partition(numArray,0,numArray.length - 1);
+    partition(numArray,0,numArray.length - 1);
     // System.out.println("quickselect for the fourth smallest element: " + quickselect(numArray,4));
     // System.out.println("quickselect for the ninth smallest element: " + quickselect(numArray,9));
-
-    System.out.println("quickselect for the 0th smallest element: " + quickselect(numArray,0));
+    //
+    // System.out.println("quickselect for the 0th smallest element: " + quickselect(numArray,0));
   }
 
 
