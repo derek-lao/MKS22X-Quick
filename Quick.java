@@ -124,7 +124,16 @@ public class Quick{
   /*Modify the array to be in increasing order.
   */
   public static void quicksort(int[] data){
+    quicksortH(data,0,data.length - 1);
+  }
 
+  public static void quicksortH(int[] data,int splice1, int splice2){
+    int holder = partition(data,splice1,splice2);
+    if(splice1 < splice2)
+    {
+      quicksortH(data,splice1,holder - 1);
+      quicksortH(data,holder + 1,splice2);
+    }
   }
 
 
