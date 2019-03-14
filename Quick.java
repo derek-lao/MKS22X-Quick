@@ -30,8 +30,8 @@ public class Quick{
     int holder = data[start];
     data[start] = pivot;
     data[random] = holder;
-    System.out.println("The index is " + random);
-    System.out.println("The pivot value is " + pivot + "\n");
+    // System.out.println("The index is " + random);
+    // System.out.println("The pivot value is " + pivot + "\n");
     int s = start + 1;
     int st = start + 1;
     int e = end;
@@ -55,9 +55,9 @@ public class Quick{
           random = s;
         }
         i = data.length;
-        System.out.println("After swapping:");
-        System.out.println("Index st is " + st + "  Index e is " + e);
-        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        // System.out.println("After swapping:");
+        // System.out.println("Index st is " + st + "  Index e is " + e);
+        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
       if(data[st] > pivot)
@@ -92,7 +92,7 @@ public class Quick{
         continue;
       }
     }
-    System.out.println("The index of the pivot is " + random);
+    // System.out.println("The index of the pivot is " + random);
     return random;
   }
 
@@ -101,7 +101,7 @@ public class Quick{
   */
   public static int quickselect(int[] data, int k){
     int answer = quickselectH(data,k,0,data.length - 1);
-    System.out.println("The array now is " + Arrays.toString(data));
+    // System.out.println("The array now is " + Arrays.toString(data));
     return answer;
   }
 
@@ -128,12 +128,14 @@ public class Quick{
   }
 
   private static void quicksortH(int[] data,int splice1, int splice2){
+    System.out.println("This is the current array: " + Arrays.toString(data));
     int holder = partition(data,splice1,splice2);
     if(splice1 < splice2)
     {
-      quicksortH(data,splice1,holder);
-      quicksortH(data,holder,splice2);
+      quicksortH(data,splice1,holder - 1);
+      quicksortH(data,holder + 1,splice2);
     }
+    System.out.println("This is the new array: " + Arrays.toString(data));
   }
 
 
