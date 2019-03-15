@@ -244,7 +244,7 @@ public class Quick{
         {
           data[start] = data[s - 1];
           data[s - 1] = pivot;
-          random = s - 1;
+          random = st - 1;
         }
         else
         {
