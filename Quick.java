@@ -365,9 +365,9 @@ public class Quick{
     {
       randomArray[i] = ((int) (Math.random() * 1000)) % 20;
     }
-    System.out.println("The original array is: " + Arrays.toString(randomArray));
-    quicksort(randomArray);
-    System.out.println("The array is: " + Arrays.toString(randomArray));
+//     System.out.println("The original array is: " + Arrays.toString(randomArray));
+//     quicksort(randomArray);
+//     System.out.println("The array is: " + Arrays.toString(randomArray));
     System.out.println("The original array is: " + Arrays.toString(issueArray));
     quicksort(issueArray);
     System.out.println("The array is: " + Arrays.toString(issueArray));
