@@ -100,8 +100,8 @@ public class Quick{
 
   // partition WITHOUT dutch flag
   public static int partition ( int [] data, int start, int end){
-    System.out.println("BEFORE ANY SWAPPING AT ALL the array is now " + Arrays.toString(data));
-    System.out.println("The start index is " + start + " and the end index is " + end);
+    // System.out.println("BEFORE ANY SWAPPING AT ALL the array is now " + Arrays.toString(data));
+    // System.out.println("The start index is " + start + " and the end index is " + end);
     if(start == end)
     {
       return start;
@@ -126,15 +126,15 @@ public class Quick{
     int holder = data[start];
     data[start] = pivot;
     data[random] = holder;
-    System.out.println("The index is " + random);
-    System.out.println("The pivot value is " + pivot + "\n");
+    // System.out.println("The index is " + random);
+    // System.out.println("The pivot value is " + pivot + "\n");
     int st = start + 1;
     int e = end;
     for(int i = 0; i < data.length && st < data.length && e > -1; i ++)
     {
-      System.out.println("Before swapping:");
-      System.out.println("Index st is " + st + "  Index e is " + e);
-      System.out.println("The array is now " + Arrays.toString(data));
+      // System.out.println("Before swapping:");
+      // System.out.println("Index st is " + st + "  Index e is " + e);
+      // System.out.println("The array is now " + Arrays.toString(data));
       if(e <= st)
       {
         if(data[st] > pivot)
@@ -150,9 +150,9 @@ public class Quick{
           random = st;
         }
         i = data.length;
-        System.out.println("After final swapping:");
-        System.out.println("Index st is " + st + "  Index e is " + e);
-        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        // System.out.println("After final swapping:");
+        // System.out.println("Index st is " + st + "  Index e is " + e);
+        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
       if(data[st] > pivot)
@@ -161,23 +161,23 @@ public class Quick{
         data[st] = data[e];
         data[e] = holder;
         e--;
-        System.out.println("After swapping:");
-        System.out.println("Index st is " + st + "  Index e is " + e);
-        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        // System.out.println("After swapping:");
+        // System.out.println("Index st is " + st + "  Index e is " + e);
+        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
       if(data[st] <= pivot)
       {
         st++;
-        System.out.println("After swapping:");
-        System.out.println("Index st is " + st + "  Index e is " + e);
-        System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        // System.out.println("After swapping:");
+        // System.out.println("Index st is " + st + "  Index e is " + e);
+        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
         continue;
       }
     }
-    System.out.println("The index of the pivot is " + random);
-    System.out.println("The pivot value was " + pivot);
-    System.out.println("Finished this partition call.\n");
+    // System.out.println("The index of the pivot is " + random);
+    // System.out.println("The pivot value was " + pivot);
+    // System.out.println("Finished this partition call.\n");
     return random;
   }
 
@@ -219,7 +219,7 @@ public class Quick{
   }
 
   private static void quicksortH(int[] data,int splice1, int splice2){
-    System.out.println("This is the current array: " + Arrays.toString(data));
+    // System.out.println("This is the current array: " + Arrays.toString(data));
     if(splice1 < splice2)
     {
       // int holder = quickselectH(data, (splice1 + splice2) / 2, splice1,splice2);
@@ -233,71 +233,71 @@ public class Quick{
         quicksortH(data,holder + 1,splice2);
       }
     }
-    System.out.println("This is the new array: " + Arrays.toString(data));
+    // System.out.println("This is the new array: " + Arrays.toString(data));
   }
 
 
-  public static void main(String[] args){
-    // int[] randomArray = new int[((int) (Math.random() * 1000)) % 20];
-    int[] randomArray = new int[10];
-    int[][] problemArrays = new int[10][10];
-    int[] issueArray = {10, 11, 15, 11, 15, 12, 10, 14, 11, 10};
-    problemArrays[0] = issueArray;
-    // for(int i = 0; i < 1; i ++)
-    // {
-    //   int[] thisArray = problemArrays[i];
-    //   System.out.println("The original array is: " + Arrays.toString(thisArray));
-    //   quickselect(thisArray,4);
-    //   System.out.println("The new array is: " + Arrays.toString(thisArray));
-    // }
-
-    for(int i = 0; i < randomArray.length; i ++)
-    {
-      randomArray[i] = ((int) (Math.random() * 1000)) % 20;
-    }
-    System.out.println("The original array is: " + Arrays.toString(randomArray));
-    // partition(numArray,0,numArray.length - 1);
-    // System.out.println("quickselect for the element at 4th index: " + quickselect(numArray,4));
-
-    // System.out.println("quickselect for the 0th smallest element: " + quickselect(numArray,0));
-    quicksort(randomArray);
-    System.out.println("The array is: " + Arrays.toString(randomArray));
-  }
-
-  // public static void main(String[]args){
-  //   System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
-  //   int[]MAX_LIST = {1000000000,500,10};
-  //   for(int MAX : MAX_LIST){
-  //     for(int size = 31250; size < 2000001; size*=2){
-  //       long qtime=0;
-  //       long btime=0;
-  //       //average of 5 sorts.
-  //       for(int trial = 0 ; trial <=5; trial++){
-  //         int []data1 = new int[size];
-  //         int []data2 = new int[size];
-  //         for(int i = 0; i < data1.length; i++){
-  //           data1[i] = (int)(Math.random()*MAX);
-  //           data2[i] = data1[i];
-  //         }
-  //         long t1,t2;
-  //         t1 = System.currentTimeMillis();
-  //         Quick.quicksort(data2);
-  //         t2 = System.currentTimeMillis();
-  //         qtime += t2 - t1;
-  //         t1 = System.currentTimeMillis();
-  //         Arrays.sort(data1);
-  //         t2 = System.currentTimeMillis();
-  //         btime+= t2 - t1;
-  //         if(!Arrays.equals(data1,data2)){
-  //           System.out.println("FAIL TO SORT!");
-  //           System.exit(0);
-  //         }
-  //       }
-  //       System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
-  //     }
-  //     System.out.println();
+  // public static void main(String[] args){
+  //   // int[] randomArray = new int[((int) (Math.random() * 1000)) % 20];
+  //   int[] randomArray = new int[10];
+  //   int[][] problemArrays = new int[10][10];
+  //   int[] issueArray = {10, 11, 15, 11, 15, 12, 10, 14, 11, 10};
+  //   problemArrays[0] = issueArray;
+  //   // for(int i = 0; i < 1; i ++)
+  //   // {
+  //   //   int[] thisArray = problemArrays[i];
+  //   //   System.out.println("The original array is: " + Arrays.toString(thisArray));
+  //   //   quickselect(thisArray,4);
+  //   //   System.out.println("The new array is: " + Arrays.toString(thisArray));
+  //   // }
+  //
+  //   for(int i = 0; i < randomArray.length; i ++)
+  //   {
+  //     randomArray[i] = ((int) (Math.random() * 1000)) % 20;
   //   }
+  //   System.out.println("The original array is: " + Arrays.toString(randomArray));
+  //   // partition(numArray,0,numArray.length - 1);
+  //   // System.out.println("quickselect for the element at 4th index: " + quickselect(numArray,4));
+  //
+  //   // System.out.println("quickselect for the 0th smallest element: " + quickselect(numArray,0));
+  //   quicksort(randomArray);
+  //   System.out.println("The array is: " + Arrays.toString(randomArray));
   // }
+
+  public static void main(String[]args){
+    System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
+    int[]MAX_LIST = {1000000000,500,10};
+    for(int MAX : MAX_LIST){
+      for(int size = 31250; size < 2000001; size*=2){
+        long qtime=0;
+        long btime=0;
+        //average of 5 sorts.
+        for(int trial = 0 ; trial <=5; trial++){
+          int []data1 = new int[size];
+          int []data2 = new int[size];
+          for(int i = 0; i < data1.length; i++){
+            data1[i] = (int)(Math.random()*MAX);
+            data2[i] = data1[i];
+          }
+          long t1,t2;
+          t1 = System.currentTimeMillis();
+          Quick.quicksort(data2);
+          t2 = System.currentTimeMillis();
+          qtime += t2 - t1;
+          t1 = System.currentTimeMillis();
+          Arrays.sort(data1);
+          t2 = System.currentTimeMillis();
+          btime+= t2 - t1;
+          if(!Arrays.equals(data1,data2)){
+            System.out.println("FAIL TO SORT!");
+            System.exit(0);
+          }
+        }
+        System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
+      }
+      System.out.println();
+    }
+  }
 
 
 }
