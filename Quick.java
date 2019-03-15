@@ -351,7 +351,7 @@ public class Quick{
     // int[] randomArray = new int[((int) (Math.random() * 1000)) % 20];
     int[] randomArray = new int[10];
     int[][] problemArrays = new int[10][10];
-    int[] issueArray = {0, 16, 0, 11, 13, 10, 4, 10, 19, 4};
+    int[] issueArray = {2, 14, 2, 11, 7, 0, 15, 2, 16, 0};
     problemArrays[0] = issueArray;
     // for(int i = 0; i < 1; i ++)
     // {
@@ -365,12 +365,12 @@ public class Quick{
     {
       randomArray[i] = ((int) (Math.random() * 1000)) % 20;
     }
-    System.out.println("The original array is: " + Arrays.toString(randomArray));
-    quicksort(randomArray);
-    System.out.println("The array is: " + Arrays.toString(randomArray));
-//     System.out.println("The original array is: " + Arrays.toString(issueArray));
-//     quicksort(issueArray);
-//     System.out.println("The array is: " + Arrays.toString(issueArray));
+//     System.out.println("The original array is: " + Arrays.toString(randomArray));
+//     quicksort(randomArray);
+//     System.out.println("The array is: " + Arrays.toString(randomArray));
+    System.out.println("The original array is: " + Arrays.toString(issueArray));
+    quicksort(issueArray);
+    System.out.println("The array is: " + Arrays.toString(issueArray));
   }
 
 //   public static void main(String[]args){
