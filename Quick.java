@@ -146,7 +146,7 @@ public class Quick{
       System.out.println("The array is now " + Arrays.toString(data));
       if(e <= st)
       {
-        if(data[s] >= pivot)
+        if(data[st] >= pivot)
         {
           data[start] = data[s - 1];
           data[s - 1] = pivot;
