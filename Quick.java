@@ -330,7 +330,7 @@ public class Quick{
 
   private static void quicksortH(int[] data,int splice1, int splice2){
     // System.out.println("This is the current array: " + Arrays.toString(data));
-    if(splice1 <= splice2)
+    if(splice1 < splice2)
     {
       // int holder = quickselectH(data, (splice1 + splice2) / 2, splice1,splice2);
       int holder = partition(data,splice1,splice2);
