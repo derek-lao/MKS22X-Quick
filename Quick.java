@@ -231,6 +231,7 @@ public class Quick{
     // System.out.println("The index is " + random);
     // System.out.println("The pivot value is " + pivot + "\n");
     int st = start + 1;
+    int s = st;
     int e = end;
     for(int i = 0; i < data.length && st < data.length && e > -1; i ++)
     {
