@@ -137,7 +137,7 @@ public class Quick{
       // System.out.println("The array is now " + Arrays.toString(data));
       if(e <= st)
       {
-        if(data[st] > pivot)
+        if(data[st] >= pivot)
         {
           data[start] = data[st - 1];
           data[st - 1] = pivot;
@@ -153,9 +153,8 @@ public class Quick{
         // System.out.println("After final swapping:");
         // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-        continue;
       }
-      if(data[st] > pivot)
+      else if(data[st] > pivot)
       {
         holder = data[st];
         data[st] = data[e];
@@ -164,15 +163,35 @@ public class Quick{
         // System.out.println("After swapping:");
         // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-        continue;
       }
-      if(data[st] <= pivot)
+      else if(data[st] < pivot)
       {
         st++;
         // System.out.println("After swapping:");
         // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-        continue;
+      }
+      else
+      {
+        int thing = ((int) (Math.random() * 1000)) % 2;
+        // System.out.println("The stupid random mod2 is " + thing);
+        if( (thing == 0))
+        {
+          st++;
+          // System.out.println("After swapping:");
+          // System.out.println("Index st is " + st + "  Index e is " + e);
+          // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        }
+        else
+        {
+          holder = data[st];
+          data[st] = data[e];
+          data[e] = holder;
+          e--;
+          // System.out.println("After swapping:");
+          // System.out.println("Index st is " + st + "  Index e is " + e);
+          // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+        }
       }
     }
     // System.out.println("The index of the pivot is " + random);
@@ -220,7 +239,7 @@ public class Quick{
 
   private static void quicksortH(int[] data,int splice1, int splice2){
     // System.out.println("This is the current array: " + Arrays.toString(data));
-    if(splice1 < splice2)
+    if(splice1 <= splice2)
     {
       // int holder = quickselectH(data, (splice1 + splice2) / 2, splice1,splice2);
       int holder = partition(data,splice1,splice2);
@@ -294,6 +313,8 @@ public class Quick{
           }
         }
         System.out.println(size +"\t\t"+MAX+"\t"+1.0*qtime/btime);
+        // System.out.println("Numerator is " + qtime);
+        // System.out.println("Denominator is " + btime);
       }
       System.out.println();
     }
