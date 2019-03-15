@@ -99,6 +99,108 @@ public class Quick{
 
 
   // partition WITHOUT dutch flag
+  // public static int partition ( int [] data, int start, int end){
+  //   // System.out.println("BEFORE ANY SWAPPING AT ALL the array is now " + Arrays.toString(data));
+  //   // System.out.println("The start index is " + start + " and the end index is " + end);
+  //   if(start == end)
+  //   {
+  //     return start;
+  //   }
+  //   int random = 0; // debug
+  //   int lo = data[start];
+  //   int hi = data[end];
+  //   int med = data[((start + end) / 2)];
+  //   if((lo <= hi && lo >= med) || (lo >= hi && lo <= med))
+  //   {
+  //     random = start;
+  //   }
+  //   else if((hi <= lo && hi >= med) || (hi >= lo && hi <= med))
+  //   {
+  //     random = end;
+  //   }
+  //   else if((med <= lo && med >= hi) || (med >= lo && med <= hi))
+  //   {
+  //     random = (start + end) / 2;
+  //   }
+  //   int pivot = data[random];
+  //   int holder = data[start];
+  //   data[start] = pivot;
+  //   data[random] = holder;
+  //   // System.out.println("The index is " + random);
+  //   // System.out.println("The pivot value is " + pivot + "\n");
+  //   int st = start + 1;
+  //   int e = end;
+  //   for(int i = 0; i < data.length && st < data.length && e > -1; i ++)
+  //   {
+  //     // System.out.println("Before swapping:");
+  //     // System.out.println("Index st is " + st + "  Index e is " + e);
+  //     // System.out.println("The array is now " + Arrays.toString(data));
+  //     if(e <= st)
+  //     {
+  //       if(data[st] >= pivot)
+  //       {
+  //         data[start] = data[st - 1];
+  //         data[st - 1] = pivot;
+  //         random = st - 1;
+  //       }
+  //       else
+  //       {
+  //         data[start] = data[st];
+  //         data[st] = pivot;
+  //         random = st;
+  //       }
+  //       i = data.length;
+  //       // System.out.println("After final swapping:");
+  //       // System.out.println("Index st is " + st + "  Index e is " + e);
+  //       // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+  //     }
+  //     else if(data[st] > pivot)
+  //     {
+  //       holder = data[st];
+  //       data[st] = data[e];
+  //       data[e] = holder;
+  //       e--;
+  //       // System.out.println("After swapping:");
+  //       // System.out.println("Index st is " + st + "  Index e is " + e);
+  //       // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+  //     }
+  //     else if(data[st] < pivot)
+  //     {
+  //       st++;
+  //       // System.out.println("After swapping:");
+  //       // System.out.println("Index st is " + st + "  Index e is " + e);
+  //       // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+  //     }
+  //     else
+  //     {
+  //       int thing = ((int) (Math.random() * 1000)) % 2;
+  //       // System.out.println("The stupid random mod2 is " + thing);
+  //       if( (thing == 0))
+  //       {
+  //         st++;
+  //         // System.out.println("After swapping:");
+  //         // System.out.println("Index st is " + st + "  Index e is " + e);
+  //         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+  //       }
+  //       else
+  //       {
+  //         holder = data[st];
+  //         data[st] = data[e];
+  //         data[e] = holder;
+  //         e--;
+  //         // System.out.println("After swapping:");
+  //         // System.out.println("Index st is " + st + "  Index e is " + e);
+  //         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+  //       }
+  //     }
+  //   }
+  //   // System.out.println("The index of the pivot is " + random);
+  //   // System.out.println("The pivot value was " + pivot);
+  //   // System.out.println("Finished this partition call.\n");
+  //   return random;
+  // }
+
+  // copy over partition with dutch flag
   public static int partition ( int [] data, int start, int end){
     // System.out.println("BEFORE ANY SWAPPING AT ALL the array is now " + Arrays.toString(data));
     // System.out.println("The start index is " + start + " and the end index is " + end);
@@ -137,61 +239,50 @@ public class Quick{
       // System.out.println("The array is now " + Arrays.toString(data));
       if(e <= st)
       {
-        if(data[st] >= pivot)
+        if(data[s] >= pivot)
         {
-          data[start] = data[st - 1];
-          data[st - 1] = pivot;
-          random = st - 1;
+          data[start] = data[s - 1];
+          data[s - 1] = pivot;
+          random = s - 1;
         }
         else
         {
-          data[start] = data[st];
-          data[st] = pivot;
-          random = st;
+          data[start] = data[s];
+          data[s] = pivot;
+          random = s;
         }
         i = data.length;
-        // System.out.println("After final swapping:");
+        // System.out.println("After swapping:");
         // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
       }
       else if(data[st] > pivot)
       {
-        holder = data[st];
-        data[st] = data[e];
-        data[e] = holder;
-        e--;
-        // System.out.println("After swapping:");
-        // System.out.println("Index st is " + st + "  Index e is " + e);
-        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-      }
-      else if(data[st] < pivot)
-      {
-        st++;
-        // System.out.println("After swapping:");
-        // System.out.println("Index st is " + st + "  Index e is " + e);
-        // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-      }
-      else
-      {
-        int thing = ((int) (Math.random() * 1000)) % 2;
-        // System.out.println("The stupid random mod2 is " + thing);
-        if( (thing == 0))
-        {
-          st++;
-          // System.out.println("After swapping:");
-          // System.out.println("Index st is " + st + "  Index e is " + e);
-          // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-        }
-        else
-        {
-          holder = data[st];
-          data[st] = data[e];
-          data[e] = holder;
-          e--;
-          // System.out.println("After swapping:");
-          // System.out.println("Index st is " + st + "  Index e is " + e);
-          // System.out.println("The array is now " + Arrays.toString(data) + "\n");
-        }
+         holder = data[st];
+         data[st] = data[e];
+         data[e] = holder;
+         e--;
+         // System.out.println("After swapping:");
+         // System.out.println("Index st is " + st + "  Index e is " + e);
+         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+       }
+       else if(data[st] < pivot)
+       {
+         holder = data[st];
+         data[st] = data[s];
+         data[s] = holder;
+         st++;
+         s++;
+         // System.out.println("After swapping:");
+         // System.out.println("Index st is " + st + "  Index e is " + e);
+         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
+       }
+       else // (data[st] == pivot)
+       {
+         st++;
+         // System.out.println("After swapping:");
+         // System.out.println("Index st is " + st + "  Index e is " + e);
+         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
       }
     }
     // System.out.println("The index of the pivot is " + random);
@@ -199,7 +290,6 @@ public class Quick{
     // System.out.println("Finished this partition call.\n");
     return random;
   }
-
 
   /*return the value that is the kth smallest value of the array. k = 0 is smallest
   */
