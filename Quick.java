@@ -154,9 +154,9 @@ public class Quick{
         }
         else
         {
-          data[start] = data[s];
-          data[s] = pivot;
-          random = s;
+          data[start] = data[st];
+          data[st] = pivot;
+          random = st;
         }
         i = data.length;
         System.out.println("After swapping:");
