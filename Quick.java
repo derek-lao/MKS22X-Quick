@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Quick{
+  int dutchDuplicateCounter;
   /**@return the index of the final position of the pivot element.
  */
   // partition WITHOUT dutch flag
@@ -266,7 +267,7 @@ public class Quick{
 //     //   quickselect(thisArray,4);
 //     //   System.out.println("The new array is: " + Arrays.toString(thisArray));
 //     // }
-  
+
 //     for(int i = 0; i < randomArray.length; i ++)
 //     {
 //       randomArray[i] = ((int) (Math.random() * 1000)) % 20;
