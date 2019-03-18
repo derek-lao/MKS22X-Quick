@@ -36,7 +36,7 @@ public class Quick{
     // System.out.println("The pivot value is " + pivot + "\n");
     int st = start + 1;
     int e = end;
-    for(int i = 0; i < data.length && st < data.length && e > -1; i ++)
+    for(;st < data.length && e > -1;)
     {
       // System.out.println("Before swapping:");
       // System.out.println("Index st is " + st + "  Index e is " + e);
@@ -55,7 +55,7 @@ public class Quick{
           data[st] = pivot;
           random = st;
         }
-        i = data.length;
+        st = data.length;
         // System.out.println("After final swapping:");
         // System.out.println("Index st is " + st + "  Index e is " + e);
         // System.out.println("The array is now " + Arrays.toString(data) + "\n");
@@ -140,7 +140,7 @@ public class Quick{
     int st = start + 1;
     int s = st;
     int e = end;
-    for(int i = 0; i < data.length && st < data.length && e > -1; i ++)
+    for(;st < data.length && e > -1;)
     {
 //       System.out.println("Before swapping:");
 //       System.out.println("Index st is " + st + "  Index e is " + e);
@@ -159,7 +159,7 @@ public class Quick{
           data[st] = pivot;
           random = st;
         }
-        i = data.length;
+        st = data.length;
 //         System.out.println("After swapping:");
 //         System.out.println("Index st is " + st + "  Index e is " + e);
 //         System.out.println("The array is now " + Arrays.toString(data) + "\n");
