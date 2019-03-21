@@ -240,18 +240,48 @@ public class Quick{
     // System.out.println("This is the current array: " + Arrays.toString(data));
     if(splice1 <= splice2)
     {
-      // int holder = quickselectH(data, (splice1 + splice2) / 2, splice1,splice2);
-      int[] holder = partitionSecret(data,splice1,splice2);
-      if(holder[0] != 0)
+      if(splice2 - splice1 <= 50)
       {
-        quicksortH(data,splice1,holder[0] - 1);
+        insertionsort(data,splice1,splice2);
       }
-      if(holder[1] != data.length - 1)
+      else
       {
-        quicksortH(data,holder[1] + 1,splice2);
+        int[] holder = partitionSecret(data,splice1,splice2);
+        if(holder[0] != 0)
+        {
+          quicksortH(data,splice1,holder[0] - 1);
+        }
+        if(holder[1] != data.length - 1)
+        {
+          quicksortH(data,holder[1] + 1,splice2);
+        }
       }
     }
     // System.out.println("This is the new array: " + Arrays.toString(data));
+  }
+
+  public static void insertionsort(int[] data, int lo,int hi){
+    for(int i = lo + 1; i <= hi; i ++)
+    {
+      // System.out.println("Initial look at array " + Arrays.toString(data));
+      if(data[i] < data[i - 1])
+      {
+        for(int n = i; n > lo; n --)
+        {
+          if(data[n - 1] > data[n])
+          {
+            int holder = data[n - 1];
+            data[n - 1] = data[n];
+            data[n] = holder;
+          }
+          else
+          {
+            n = -1;
+          }
+          // System.out.println("Something wrong has been found and fixed " + Arrays.toString(data));
+        }
+      }
+    }
   }
 
 
@@ -262,29 +292,22 @@ public class Quick{
 //     int[] issueArray = {2, 14, 2, 11, 7, 0, 15, 2, 16, 0};
 //     problemArrays[0] = issueArray;
 //     int randomIndex = 0;
-//     // for(int i = 0; i < 1; i ++)
-//     // {
-//     //   int[] thisArray = problemArrays[i];
-//     //   System.out.println("The original array is: " + Arrays.toString(thisArray));
-//     //   quickselect(thisArray,4);
-//     //   System.out.println("The new array is: " + Arrays.toString(thisArray));
-//     // }
 //
 //     for(int i = 0; i < randomArray.length; i ++)
 //     {
 //       randomArray[i] = ((int) (Math.random() * 1000)) % 20;
 //       randomIndex = ((int) (Math.random() * 1000)) % randomArray.length;
 //     }
-// //     System.out.println("The original array is: " + Arrays.toString(randomArray));
-// //     quicksort(randomArray);
-// //     System.out.println("The array is: " + Arrays.toString(randomArray));
+//     System.out.println("The original array is: " + Arrays.toString(randomArray));
+//     quicksort(randomArray);
+//     System.out.println("The array is: " + Arrays.toString(randomArray));
 //     // System.out.println("The original array is: " + Arrays.toString(issueArray));
 //     // quicksort(issueArray);
 //     // System.out.println("The array is: " + Arrays.toString(issueArray));
-//     System.out.println("The original array is " + Arrays.toString(randomArray));
-//     System.out.println("The " + randomIndex + "th sorted element of the array is " + quickselect(randomArray,randomIndex));
-//     System.out.println("After finding the element, the array is " + Arrays.toString(randomArray));
-//   }
+//     // System.out.println("The original array is " + Arrays.toString(randomArray));
+//     // System.out.println("The " + randomIndex + "th sorted element of the array is " + quickselect(randomArray,randomIndex));
+//     // System.out.println("After finding the element, the array is " + Arrays.toString(randomArray));
+// //   }
 
   public static void main(String[]args){
     System.out.println("Size\t\tMax Value\tquick/builtin ratio ");
@@ -322,6 +345,5 @@ public class Quick{
       System.out.println();
     }
   }
-
 
 }
